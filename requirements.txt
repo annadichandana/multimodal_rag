@@ -1,0 +1,13 @@
+langchain==0.1.20
+langchain-community==0.0.38
+langchain-google-genai
+langchain-huggingface
+faiss-cpu==1.8.0
+sentence-transformers==2.7.0
+google-generativeai
+python-dotenv==1.0.1
+pdfplumber
+Pillow==10.3.0
+pandas==2.2.2
+rank_bm25
+streamlit
