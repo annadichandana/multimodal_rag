@@ -2,6 +2,12 @@ import os
 import streamlit as st
 from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
+import asyncio
+
+try:
+    asyncio.get_running_loop()
+except RuntimeError:
+    asyncio.set_event_loop(asyncio.new_event_loop())
 
 class SimpleMemory:
     def __init__(self):
