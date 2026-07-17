@@ -3,7 +3,10 @@ services:
     name: multimodal-rag
     runtime: python
     pythonVersion: "3.11.9"
-    buildCommand: pip install -r requirements.txt
+    buildCommand: : |
+    apt-get update && apt-get install -y build-essential
+    pip install -r requirements.txt
+    pip install --upgrade pip setuptools wheel
     startCommand: streamlit run app.py --server.port $PORT --server.address 0.0.0.0 --server.headless true
     envVars:
       - key: GOOGLE_API_KEY
