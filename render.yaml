@@ -2,10 +2,7 @@ services:
   - type: web
     name: multimodal-rag
     env: python
-    buildCommand: |
-      apt-get update && apt-get install -y build-essential
-      pip install -r requirements.txt
-      pip install --upgrade pip setuptools wheel
+    buildCommand: pip install --upgrade pip setuptools wheel && pip install -r requirements.txt
     startCommand: streamlit run app.py --server.port $PORT --server.address 0.0.0.0 --server.headless true
     envVars:
       - key: PYTHON_VERSION
