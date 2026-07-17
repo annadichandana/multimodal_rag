@@ -1,0 +1,23 @@
+# Environment Variables
+.env
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+.Python
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Extracted data (generated at runtime, not needed in repo)
+data/extracted/**
+!data/extracted/images/.gitkeep
+!data/extracted/tables/.gitkeep
+
+# OS files
+.DS_Store
+Thumbs.db
