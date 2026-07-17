@@ -10,16 +10,17 @@ all three modalities.  The metadata carries the table_id and csv_path so
 callers can retrieve the exact CSV data when needed.
 """
 
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_core.documents import Document
+import os
 
 
-_EMBED_MODEL_NAME = "BAAI/bge-base-en-v1.5"
-
-
-def _get_embeddings() -> HuggingFaceEmbeddings:
-    return HuggingFaceEmbeddings(model_name=_EMBED_MODEL_NAME)
+def _get_embeddings() -> GoogleGenerativeAIEmbeddings:
+    return GoogleGenerativeAIEmbeddings(
+        model="models/text-embedding-004",
+        google_api_key=os.getenv("GOOGLE_API_KEY")
+    )
 
 
 def index_table_descriptions(

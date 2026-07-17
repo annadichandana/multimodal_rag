@@ -16,7 +16,7 @@ indexes in the multimodal pipeline.  The query router decides whether to
 hit this index, the image index, the table index, or all three.
 """
 
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_core.documents import Document
 from rank_bm25 import BM25Okapi
@@ -24,13 +24,12 @@ import pickle
 import os
 
 
-# Shared embedding model — instantiated once to avoid repeated model loading.
-_EMBED_MODEL_NAME = "BAAI/bge-base-en-v1.5"
-
-
-def _get_embeddings() -> HuggingFaceEmbeddings:
-    """Return a HuggingFaceEmbeddings instance for all-MiniLM-L6-v2."""
-    return HuggingFaceEmbeddings(model_name=_EMBED_MODEL_NAME)
+def _get_embeddings() -> GoogleGenerativeAIEmbeddings:
+    """Return a GoogleGenerativeAIEmbeddings instance."""
+    return GoogleGenerativeAIEmbeddings(
+        model="models/text-embedding-004",
+        google_api_key=os.getenv("GOOGLE_API_KEY")
+    )
 
 
 def index_text_chunks(

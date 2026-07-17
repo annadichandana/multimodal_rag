@@ -43,7 +43,7 @@ from .text_indexer import search_text
 from .image_indexer import search_images
 from .table_indexer import search_tables
 
-_RERANKER_MODEL_NAME = "BAAI/bge-reranker-large"
+_RERANKER_MODEL_NAME = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 _reranker = None
 
 def _get_reranker() -> CrossEncoder:
